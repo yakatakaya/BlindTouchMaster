@@ -1,0 +1,32 @@
+.title{
+    text-align: center;
+}
+
+#parent{
+    display: flex;
+    justify-content: center;
+}
+
+.alphabet{
+    font-size: 50px;
+    font-weight: 1000;
+    margin: 10px;
+    color:rgba(255, 255, 255);
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    font-family: 'Bangers', cursive;
+}
+
+.correct{
+    color: rgb(0, 255, 0);
+}
+
+.miss{
+    color: red;
+    animation: blinking 0.4s ease-in-out 3 alternate;
+}
+
+
+@keyframes blinking {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}

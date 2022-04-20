@@ -25,6 +25,10 @@
     animation: blinking 0.4s ease-in-out 3 alternate;
 }
 
+.ending{
+    color: orange;
+    animation: blinking 0.4s ease-in-out 10 alternate;
+}
 
 
 @keyframes blinking {

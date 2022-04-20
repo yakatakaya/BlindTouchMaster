@@ -163,6 +163,17 @@ document.onkeyup =
     }
 
 const Ending = () => {
+    abcSongKeyScore.forEach(s =>{
+        let element = document.getElementById(s.keyCode);
+        element.classList.add("ending");
+
+        element.addEventListener("animationend", function() {
+            // transition終了時の処理
+            element.classList.remove("ending");
+        });
+
+    })
+
     const abcSongEndingScore = [
         new Sound(C, 0.2),
         new Sound(C, 0.2),
@@ -199,6 +210,12 @@ const Ending = () => {
     gain.connect(audioContext.destination);
     oscillator.start(t0);
     oscillator.stop(t0 + t);
+
+    abcSongKeyScore.forEach(s =>{
+        let element = document.getElementById(s.keyCode);
+
+    })
+
 
 
 };

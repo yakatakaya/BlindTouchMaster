@@ -1,6 +1,7 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var ctx = null;
 var oscillator;
+var gain;
 var isPlaying = false;
 var currentKeyCode = "";
 
@@ -102,6 +103,8 @@ document.onkeydown =
     function keydown(key) {
         if(ctx === null){
             ctx = new AudioContext();
+            gain = ctx.createGain();
+            gain.gain.value = 0.1;
         }
 
         if(key.code != currentKeyCode){
@@ -130,7 +133,8 @@ function play(sound){
     oscillator = ctx.createOscillator();
     oscillator.type = "square"; // sine, square, sawtooth, triangleがある
     oscillator.frequency.setValueAtTime(sound, ctx.currentTime);
-    oscillator.connect(ctx.destination);
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
     oscillator.start();
 
     isPlaying = true;
@@ -151,6 +155,7 @@ document.onkeyup =
                 let element = document.getElementById(s.keyCode);
                 element.classList.remove("correct");
                 element.classList.remove("miss");
+
             })
             n = 0;
 
@@ -175,13 +180,13 @@ const Ending = () => {
         new Sound(C, 0.4)
     ];
     
-    console.log("Ending")
     const audioContext = new AudioContext();
     const t0 = audioContext.currentTime;
     let t = 0;
     
     var oscillator = audioContext.createOscillator();
     var gain = audioContext.createGain();
+    gain.gain.value = 0.1;
     
     oscillator.type = "square";
     abcSongEndingScore.forEach((s) => {
@@ -189,10 +194,11 @@ const Ending = () => {
         oscillator.frequency.setValueAtTime(s.sound, t0 + t);
         t += d;
     });
-    oscillator.start(t0);
-    oscillator.stop(t0 + t);
     oscillator.connect(gain);
     
     gain.connect(audioContext.destination);
+    oscillator.start(t0);
+    oscillator.stop(t0 + t);
+
 
 };

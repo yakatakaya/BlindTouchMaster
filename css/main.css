@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+.foot{
+    margin-top: 30px;
+    text-align: center;
+}
+
 #parent{
     display: flex;
     justify-content: center;

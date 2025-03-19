@@ -1,0 +1,7 @@
+title: Blind Touch Master
+email: secret
+description: >- # this means to ignore newlines until "baseurl:"
+  Let's practice the blind touch typing with the master.
+
+plugins:
+  - jekyll-sitemap

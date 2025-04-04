@@ -35,6 +35,11 @@
     animation: blinking 0.4s ease-in-out 10 alternate;
 }
 
+.ad-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @keyframes blinking {
 	0% {opacity: 0;}
